@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Kilometers
+<input id="km" type="number" >
+Time :
+<input id="time" type="number">
+
+<button id="submit" > Get Fare </button>
+
+<div id="fare"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.js" ></script>
+<script>
+    $(document).ready(function () {
+
+
+    $("#submit").click(function () {
+       const km = $('#km').val();
+        const time = $('#time').val();
+
+        $.get('/getfare' , { km  , time } , function (data , status) {
+
+            $('#fare').html(data.fare);
+
+        });
+
+        });
+    });
+</script>
+</html>
